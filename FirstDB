@@ -1,0 +1,29 @@
+-- Домашнее задание №2
+-- Задание 1. Установите СУБД MySQL. Создайте в домашней директории файл .my.cnf, задав в нем логин и пароль, который указывался при установке.
+
+/* Решение: Создала документ my.cnf в которой задала пароль и логин через client. Разместила его в корневой папке MySQL Server 5.7. 
+Затем через командную строку проверила заходит или нет с помощью данного размещения. Результат представлен на скрине:
+https://sun9-33.userapi.com/impg/OG38UdUicOUit55RGODF83_TbENp_g0_rhp1xA/AYb2se0H8S8.jpg?size=872x536&quality=96&proxy=1&sign=61f64cb63bcbab2b1d6a224187bd1c45&type=album
+*/
+
+-- Задание 2. Создайте базу данных example, разместите в ней таблицу users, состоящую из двух столбцов, числового id и строкового name.
+/* Решение: После завершения первого задания я создала таблицу example через командную строку: CREATE DATABASE example и sample
+*/
+
+CREATE DATABASE example;
+CREATE DATABASE sample;
+-- Далее редактировала таблицу example, создавая в ней столбцы с различными параметрами:
+
+USE example;
+CREATE TABLE users (id SERIAL PRIMARY KEY, name VARCHAR(255) COMMENT 'Имя пользователя');
+exit;
+
+-- https://sun9-30.userapi.com/impg/x_Hi93t1HZe2J4I21xTEnWyYCf-Sf79vsgpZqQ/NO4Ccax0Gbw.jpg?size=851x549&quality=96&proxy=1&sign=5bba6e8935c16a5bf87cccf6d1d42278&type=album
+-- Задание 3. Создайте дамп базы данных example из предыдущего задания, разверните содержимое дампа в новую базу данных sample.
+/*Решение: через командную строку ввела:
+*/
+
+--https://sun9-30.userapi.com/impg/Nopvo_CfA21AurEco60psdQx0e68TExwHeLq8w/F7taMfiD388.jpg?size=860x163&quality=96&proxy=1&sign=254f265f69dafbef3e3270b56f2a547b&type=album
+-- В папке bin: появился дамп sample.sql:
+-- https://sun9-70.userapi.com/impg/rQmOvHokueTf3952-ADSTq21knpGuDuS5MvBUw/jbDVS-J6rNE.jpg?size=904x641&quality=96&proxy=1&sign=d217d6b86d557cffbebf712e518729c0&type=album
+ 
