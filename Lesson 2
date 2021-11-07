@@ -69,7 +69,29 @@ mysql> DESCRIBE users;
 mysql>
 
 -- Задание 3. Создайте дамп базы данных example из предыдущего задания, разверните содержимое дампа в новую базу данных sample.
-/*Решение: через командную строку ввела:
+/*Решение: сперва я создала sql файл с необходимым кодом для создания таблицы:
+DROP TABLE users; 
+CREATE TABLE users(
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(255) COMMENT 'Имя пользователя'
+);
+, далее через PowerShell ввела:
 */
 
- 
+mysql> CREATE DATABASE sample;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database |
++--------------------+
+| example |
+| informationschema | | mysql | | performanceschema |
+| sample |
+| sys |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> USE sample;
+Database changed
+mysql> SOURCE sample1.sql 
