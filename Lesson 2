@@ -69,29 +69,48 @@ mysql> DESCRIBE users;
 mysql>
 
 -- Задание 3. Создайте дамп базы данных example из предыдущего задания, разверните содержимое дампа в новую базу данных sample.
-/*Решение: сперва я создала sql файл с необходимым кодом для создания таблицы:
-DROP TABLE users; 
-CREATE TABLE users(
-	id SERIAL PRIMARY KEY,
-	name VARCHAR(255) COMMENT 'Имя пользователя'
-);
-, далее через PowerShell ввела:
+/*Решение (через PowerShall не получилось, были нерешаемые проблемы с кодировкой):  через командную строку ввела:
 */
 
-mysql> CREATE DATABASE sample;
-Query OK, 1 row affected (0.01 sec)
+C:\Users\Александр>mysqldump example > sample_dump.sql
 
-mysql> SHOW DATABASES;
-+--------------------+
-| Database |
-+--------------------+
-| example |
-| informationschema | | mysql | | performanceschema |
-| sample |
-| sys |
-+--------------------+
-6 rows in set (0.00 sec)
+C:\Users\Александр>mysql sample < sample_dump.sql
+
+C:\Users\Александр>mysql
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 59
+Server version: 8.0.26 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
 mysql> USE sample;
 Database changed
-mysql> SOURCE sample1.sql 
+mysql> SHOW TABLES;
++------------------+
+| Tables_in_sample |
++------------------+
+| users            |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> DESCRIBE USERS;
++-------+-----------------+------+-----+---------+----------------+
+| Field | Type            | Null | Key | Default | Extra          |
++-------+-----------------+------+-----+---------+----------------+
+| id    | bigint unsigned | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(255)    | YES  |     | NULL    |                |
++-------+-----------------+------+-----+---------+----------------+
+2 rows in set (0.00 sec)
+
+-- Задание 4. (по желанию) Ознакомьтесь более подробно с документацией утилиты mysqldump. 
+--Создайте дамп единственной таблицы help_keyword базы данных mysql. Причем добейтесь того, чтобы дамп содержал только первые 100 строк таблицы..
+/*Решение:  через командную строку ввела:
+*/
+
+C:\Users\Александр> mysqldump mysql --where='1limit100' help_keyword > mysql_dump.sql
